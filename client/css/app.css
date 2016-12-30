@@ -1,0 +1,6 @@
+body {
+  background-color: grey;
+}
+.list :nth-child(odd) {
+  background-color: white;
+}

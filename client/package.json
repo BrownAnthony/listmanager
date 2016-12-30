@@ -1,0 +1,23 @@
+{
+  "name": "list-client",
+  "version": "0.0.1",
+  "description": "",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Anthony Brown",
+  "license": "ISC",
+  "dependencies": {
+    "angular": "1.6.0",
+    "angular-route": "1.6.0",
+    "bootstrap": "3.3.7",
+    "font-awesome": "4.7.0",
+    "gulp": "3.9.1",
+    "gulp-less": "3.3.0",
+    "gulp-load-plugins": "1.4.0",
+    "gulp-refresh": "1.1.0",
+    "jquery": "3.1.1",
+    "refresh": "1.0.1"
+  }
+}
