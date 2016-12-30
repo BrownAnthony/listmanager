@@ -10,12 +10,12 @@
         </div>
     </div>
     <ul class="list-unstyled list">
-      <li class="row">
+      <li class="row" ng-repeat="list in ctrl.active">
         <div class="col-xs-10">
-          Walmart List
+          {{list.store}}: {{list.title}}
         </div>
         <div class="col-xs-2 text-right">
-          12/12/2016
+          {{list.created | date:'MM-dd-yyyy'}}
         </div>
       </li>
     </ul>
@@ -25,19 +25,20 @@
           </div>
           <div class="row">
             <div class="col-xs-12 text-center">
-              <button class="btn btn-default">Load Lists
-                <i class="fa fa-spinner fa-spin"></i>
+              <button class="btn btn-default" ng-click="ctrl.loadInactive()">
+                {{(ctrl.showInactive)?'Hide':'Load'}} Lists
+                <i class="fa fa-spinner fa-spin" ng-show="ctrl.loadingInactive"></i>
               </button>
             </div>
           </div>
       </div>
-      <ul class="list-unstyled list">
-        <li class="row">
+      <ul class="list-unstyled list" ng-show="ctrl.showInactive">
+        <li class="row" ng-repeat="list in ctrl.inactive">
           <div class="col-xs-10">
-            Target List
+            {{list.store}}: {{list.title}}
           </div>
           <div class="col-xs-2 text-right">
-            12/05/2016
+            {{list.completed | date:'MM-dd-yyyy'}}
           </div>
         </li>
       </ul>

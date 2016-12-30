@@ -1,6 +1,11 @@
 body {
   background-color: grey;
 }
-.list :nth-child(odd) {
+.list li {
+  background-color: #666;
+  color: white;
+}
+.list li:nth-child(odd) {
   background-color: white;
+  color: black;
 }
