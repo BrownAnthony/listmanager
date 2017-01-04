@@ -9,3 +9,7 @@ body {
   background-color: white;
   color: black;
 }
+.clickable {
+  cursor: pointer;
+  user-select: none;
+}

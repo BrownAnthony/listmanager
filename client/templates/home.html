@@ -1,7 +1,8 @@
 <div class="container-fluid">
   <div class="row">
     <div class="col-xs-12">
-      <h2 class="pull-left">All Lists</h2> <button class="pull-right btn btn-primary">New List</button>
+      <h2 class="pull-left">All Lists</h2>
+      <a href="/list" class="pull-right btn btn-info">New List</a>
     </div>
   </div>
   <div class="row">
@@ -10,7 +11,7 @@
         </div>
     </div>
     <ul class="list-unstyled list">
-      <li class="row" ng-repeat="list in ctrl.active">
+      <li class="row clickable" ng-repeat="list in ctrl.active" ng-click="ctrl.viewList(list)">
         <div class="col-xs-10">
           {{list.store}}: {{list.title}}
         </div>
@@ -33,7 +34,7 @@
           </div>
       </div>
       <ul class="list-unstyled list" ng-show="ctrl.showInactive">
-        <li class="row" ng-repeat="list in ctrl.inactive">
+        <li class="row clickable" ng-repeat="list in ctrl.inactive" ng-click="ctrl.viewList(list)">
           <div class="col-xs-10">
             {{list.store}}: {{list.title}}
           </div>

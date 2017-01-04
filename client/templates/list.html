@@ -5,26 +5,29 @@
       <div>Store Name</div>
     </div>
     <div class="col-xs-2 text-right">
-      <button class="btn btn-default">
+      <button class="btn" ng-class="(ctrl.edit)?'btn-success':'btn-default'" ng-click="ctrl.edit=!ctrl.edit">
         <i class="fa fa-pencil fa-fw"></i>
       </button>
-      <button class="btn btn-danger">
+      <button class="btn btn-danger" ng-if="ctrl.edit==true">
         <i class="fa fa-trash fa-fw"></i>
       </button>
     </div>
   </div>
   <ul class="list-unstyled list">
-    <li class="row">
-      <div class="col-xs-12">
-        <input type="checkbox">
-        Food
+    <li class="row" ng-repeat="item in ctrl.list.items">
+      <div class="col-xs-1">
+        <input type="checkbox" ng-model="item.checked">
       </div>
-    </li>
-    <li class="row">
-      <div class="col-xs-12">
-        <input type="checkbox">
-        Soda
+      <div class="col-xs-10">
+        <input type="text"  ng-model="item.value" ng-disabled="ctrl.edit != true">
       </div>
+      <div class="col-xs-1 text-right" ng-if="ctrl.edit" ng-click="ctrl.removeItem(item)">
+        <i class="fa fa-times text-danger clickable"></i></div>
     </li>
   </ul>
+  <div class="row" ng-if="ctrl.edit">
+    <div class="col-xs-12 text-center">
+      <button class="btn btn-info" ng-click="ctrl.addItem()"><i class="fa fa-plus"></i></button>
+    </div>
+  </div>
 </div>
