@@ -1,11 +1,21 @@
-<div class="container-fluid">
+<div class="container-fluid" ng-class="{edit: ctrl.edit}">
   <div class="row">
     <div class="col-xs-10">
-      <h2>List Title</h2>
-      <div>Store Name</div>
+      <input type="text"
+             placeholder="List Title"
+             ng-disabled="ctrl.edit != true"
+             ng-model="ctrl.list.title"
+             class="title">
+      <input type="text"
+             placeholder="Store Name"
+             ng-disabled="ctrl.edit != true"
+             ng-model="ctrl.list.store"
+             class="storeName">
     </div>
     <div class="col-xs-2 text-right">
-      <button class="btn" ng-class="(ctrl.edit)?'btn-success':'btn-default'" ng-click="ctrl.edit=!ctrl.edit">
+      <button class="btn"
+              ng-class="(ctrl.edit)?'btn-success':'btn-default'"
+              ng-click="ctrl.edit=!ctrl.edit">
         <i class="fa fa-pencil fa-fw"></i>
       </button>
       <button class="btn btn-danger" ng-if="ctrl.edit==true">
@@ -22,12 +32,16 @@
         <input type="text"  ng-model="item.value" ng-disabled="ctrl.edit != true">
       </div>
       <div class="col-xs-1 text-right" ng-if="ctrl.edit" ng-click="ctrl.removeItem(item)">
-        <i class="fa fa-times text-danger clickable"></i></div>
+        <i class="fa fa-times text-danger clickable"></i>
+      </div>
     </li>
   </ul>
   <div class="row" ng-if="ctrl.edit">
     <div class="col-xs-12 text-center">
-      <button class="btn btn-info" ng-click="ctrl.addItem()"><i class="fa fa-plus"></i></button>
+      <button class="btn btn-info" ng-click="ctrl.addItem()">
+        <i class="fa fa-plus"></i>
+      </button>
     </div>
   </div>
 </div>
+<pre>{{ctrl.list | json}}</pre>

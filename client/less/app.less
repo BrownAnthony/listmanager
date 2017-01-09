@@ -1,0 +1,41 @@
+body {
+  background-color: rgb(185, 183, 178);
+}
+.list li {
+  background-color: #666;
+  color: white;
+
+  &:nth-child(odd) {
+    background-color: white;
+    color: black;
+  }
+
+  input[type="text"] {
+    background-color: transparent;
+    border: none;
+    width: 100%;
+    padding: 0.5rem;
+  }
+}
+
+.clickable {
+  cursor: pointer;
+  user-select: none;
+}
+.title {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  font-size: 3rem;
+}
+.storeName {
+  width: 100%;
+  background-color: transparent;
+  border: none;
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+.edit input[type="text"] {
+border-bottom: 1px solid #444 !important;
+}
+@import "_nav";

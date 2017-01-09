@@ -1,27 +1,35 @@
 var gulp = require('gulp');
 var $ = require('gulp-load-plugins')();
 
-gulp.task('default', function (){
+gulp.task('default', ['less', 'js', 'html'], function (){
   $.refresh.listen();
-  gulp.watch(['css/**/*.css'], ['css']);
+  gulp.watch(['less/**/*.less'], ['less']);
   gulp.watch(['js/**/*.js'], ['js']);
-  gulp.watch(['**/*.html'], ['html']);
+  gulp.watch(['templates/**/*.html'], ['html']);
 });
 
-gulp.task('css', () => {
-  gulp.src('css/**/*.css')
+gulp.task('less', () => {
+  gulp.src('less/**/[^_]*.less')
+    .pipe($.less())
+    .pipe(gulp.dest(__dirname+'/bin/css'))
     .pipe($.refresh())
   ;
 });
 
 gulp.task('js', () => {
   gulp.src('js/**/*.js')
+    .pipe($.babel({
+      presets: ['es2015'],
+      plugins: ['angularjs-annotate']
+    }))
+    .pipe($.concat('bundle.min.js'))
+    .pipe(gulp.dest(__dirname+'/bin/js'))
     .pipe($.refresh())
   ;
 });
 
 gulp.task('html', () => {
-  gulp.src('**/*.html')
+  gulp.src('templates/**/*.html')
     .pipe($.refresh())
   ;
 });
