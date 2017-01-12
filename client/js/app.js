@@ -8,7 +8,8 @@
       })
       .when('/list/:id', {
         templateUrl: '/templates/list.html',
-        controller: 'listCtrl as ctrl'
+        controller: 'listCtrl as ctrl',
+        reloadOnSearch: false
       })
       .when('/list', {
         templateUrl: '/templates/list.html',

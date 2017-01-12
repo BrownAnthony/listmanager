@@ -17,7 +17,7 @@
       if (ctrl.showInactive === false){
         ctrl.loadingInactive = true;
         ctrl.inactivePage++;
-        socket.emit('getInactiveLists', {page:ctrl.inactivePage}, function(data) {
+        socket.emit('getInactiveLists', {page:ctrl.inactivePage, count:15}, function(data) {
           ctrl.inactive = data;
           ctrl.showInactive = true;
           ctrl.loadingInactive = false;
@@ -32,7 +32,7 @@
 
     };
     ctrl.viewList = function(list){
-      $location.path('/list/'+list.id);
+      $location.path('/list/'+list._id);
     };
   });
 
