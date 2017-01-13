@@ -1,0 +1,11 @@
+{
+  "curly": true,
+  "eqeqeq": true,
+  "esversion": 6,
+  "strict": true,
+  "predef": [
+    "console",
+    "require"
+  ],
+  "node": true
+}

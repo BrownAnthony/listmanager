@@ -18,15 +18,15 @@
               ng-click="ctrl.finish()">
         <i class="fa fa-pencil fa-fw"></i>
       </button>
-      <button class="btn btn-danger" ng-if="ctrl.edit==true">
+      <button class="btn btn-danger" ng-if="ctrl.edit == true" ng-click="ctrl.deleteList()">
         <i class="fa fa-trash fa-fw"></i>
       </button>
     </div>
   </div>
   <ul class="list-unstyled list">
-    <li class="row" ng-repeat="item in ctrl.list.items">
+    <li class="row" ng-repeat="item in ctrl.list.items" ng-class="{checked: item.checked === true}">
       <div class="col-xs-1">
-        <input type="checkbox" ng-model="item.checked">
+        <input type="checkbox" ng-model="item.checked" ng-change="ctrl.checkedItem(item)" ng-disabled="ctrl.edit === true">
       </div>
       <div class="col-xs-10">
         <input type="text"  ng-model="item.value" ng-disabled="ctrl.edit != true">
@@ -44,4 +44,3 @@
     </div>
   </div>
 </div>
-<pre>{{ctrl.list | json}}</pre>

@@ -1,4 +1,5 @@
 (function(){
+  "use strict";
   var app = angular.module('List',['ngRoute', 'ui.bootstrap']);
   app.config(function($routeProvider, $locationProvider){
     $routeProvider
@@ -17,6 +18,6 @@
       })
       .otherwise('/')
     ;
-    $locationProvider.html5Mode({enabled:true, requireBase:false})
+    $locationProvider.html5Mode({enabled:true, requireBase:false});
   });
 }());
