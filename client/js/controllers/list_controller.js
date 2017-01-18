@@ -2,7 +2,7 @@
   "use strict";
 var app = angular.module('List');
 
-  app.controller('listCtrl', function($routeParams, $scope, socket, $location){
+  app.controller('listCtrl', function($routeParams, $scope, socket, $location, deleteModalService){
     var ctrl = this;
     ctrl.list = {
       items: []
@@ -15,21 +15,50 @@ var app = angular.module('List');
     };
     ctrl.checkedItem = function(item){
       socket.emit('updateItem', {list_id: ctrl.list._id, item: item});
+      var allChecked = true;
+      ctrl.list.items.forEach(function(item){
+        if(item.checked === false || item.checked === undefined){
+          allChecked = false;
+        }
+      });
+      if(
+        ( allChecked === true && (ctrl.list.completed === undefined || ctrl.list.completed === false) ) ||
+        ( allChecked === false && (ctrl.list.completed !== undefined && ctrl.list.completed !== false) )
+    ){
+        socket.emit('completeList', {_id: ctrl.list._id, allChecked: allChecked},function(completed){
+          ctrl.list.completed = completed;
+        });
+      }
     };
 
     ctrl.removeItem = function(item){
       ctrl.list.items.splice(ctrl.list.items.indexOf(item),1);
     };
 
+    ctrl.anyChecked = function(){
+      var anyChecked = false;
+      ctrl.list.items.forEach(function(item){
+        if(item.checked === true){
+          anyChecked = true;
+        }
+      });
+      return anyChecked;
+    };
+
     ctrl.deleteList = function(){
-      if(!ctrl.list.hasOwnProperty('_id')) {
-        $location.path('/');
-      } else {
-        socket.emit('deleteList', ctrl.list._id, function(){
+      deleteModalService.promptUser().then(function(answer){
+        if(answer === false){
+          return;
+        } else if (!ctrl.list.hasOwnProperty('_id')) {
           $location.path('/');
-          $scope.$apply();
-        });
-      }
+        } else {
+          socket.emit('deleteList', ctrl.list._id, function(){
+            $location.path('/');
+            $scope.$apply();
+          });
+        }
+      });
+
     };
 
     ctrl.finish = function(){
@@ -44,7 +73,7 @@ var app = angular.module('List');
       socket.emit('updateList', angular.copy(ctrl.list), function(list){
         ctrl.list = list;
         if (hasId === false){
-          $location.path('/list/' + ctrl.list._id).replace();
+          $location.path('/list').search({id: ctrl.list._id});
           $scope.$apply();
         }
       });

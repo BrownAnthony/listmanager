@@ -7,14 +7,10 @@
         templateUrl: '/templates/home.html',
         controller: 'homeCtrl as ctrl'
       })
-      .when('/list/:id', {
+      .when('/list', {
         templateUrl: '/templates/list.html',
         controller: 'listCtrl as ctrl',
         reloadOnSearch: false
-      })
-      .when('/list', {
-        templateUrl: '/templates/list.html',
-        controller: 'listCtrl as ctrl'
       })
       .otherwise('/')
     ;

@@ -1,11 +1,12 @@
 (function(){
-var app = angular.module('List');
+  "use strict";
+  var app = angular.module('List');
 
-app.service('user', function($uibModal){
-  $uibModal.open({
-    controller: function(){},
-    templateUrl: '/templates/login_modal.html'
+  app.service('user', function($uibModal){
+    $uibModal.open({
+        controller: function(){},
+        templateUrl: '/templates/login_modal.html'
+    });
   });
-});
 
 }());
