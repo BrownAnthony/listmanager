@@ -1,0 +1,14 @@
+{
+  "restartable": "rs",
+  "ignore": [
+    ".git",
+    "node_modules/**/node_modules"
+  ],
+  "verbose": true,
+  "env": {
+    "NODE_ENV": "development",
+    "port": 8080
+  },
+  "ext": "js json",
+  "runOnChangeOnly": false
+}

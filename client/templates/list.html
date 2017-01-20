@@ -1,6 +1,6 @@
 <div class="container-fluid" ng-class="{edit: ctrl.edit}">
   <div class="row">
-    <div class="col-xs-10">
+    <div class="col-sm-10">
       <input type="text"
              placeholder="List Title"
              ng-disabled="ctrl.edit != true"
@@ -12,7 +12,7 @@
              ng-model="ctrl.list.store"
              class="storeName">
     </div>
-    <div class="col-xs-2 text-right">
+    <div class="col-sm-2 text-right">
       <button class="btn"
               ng-disabled="ctrl.anyChecked() && ctrl.edit === false"
               ng-class="(ctrl.edit)?'btn-success':'btn-default'"
@@ -30,7 +30,7 @@
         <input type="checkbox" ng-model="item.checked" ng-change="ctrl.checkedItem(item)" ng-disabled="ctrl.edit === true">
       </div>
       <div class="col-xs-10">
-        <input type="text"  ng-model="item.value" ng-disabled="ctrl.edit != true">
+        <input type="text"  ng-model="item.value" ng-disabled="ctrl.edit != true" placeholder="Item Title">
       </div>
       <div class="col-xs-1 text-right" ng-if="ctrl.edit" ng-click="ctrl.removeItem(item)">
         <i class="fa fa-times text-danger clickable"></i>
@@ -38,7 +38,7 @@
     </li>
   </ul>
   <div class="row" ng-if="ctrl.edit">
-    <div class="col-xs-12 text-center">
+    <div class="col-sm-12 text-center">
       <button class="btn btn-info" ng-click="ctrl.addItem()">
         <i class="fa fa-plus"></i>
       </button>

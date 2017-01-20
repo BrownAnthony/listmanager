@@ -1,12 +1,18 @@
 body {
   background-color: rgb(185, 183, 178);
 }
+::-webkit-input-placeholder {
+  -webkit-opacity: 0.4;
+}
+
 .list li {
   background-color: #666;
+  -webkit-text-fill-color: white;
   color: white;
 
   &:nth-child(odd) {
     background-color: white;
+    -webkit-text-fill-color: black;
     color: black;
   }
 
@@ -15,6 +21,13 @@ body {
     border: none;
     width: 100%;
     padding: 0.5rem;
+    -webkit-opacity: 1;
+    border-radius: 0;
+    &::-webkit-input-placeholder {
+      -webkit-opacity: 0;
+      opacity: 0;
+    }
+
   }
 
   &.checked input {
@@ -31,16 +44,41 @@ body {
   width: 100%;
   background-color: transparent;
   border: none;
+  -webkit-text-fill-color: black;
+  -webkit-opacity: 1;
   font-size: 3rem;
+  padding: 0;
+  border-radius: 0;
 }
 .storeName {
   width: 100%;
   background-color: transparent;
   border: none;
   font-size: 2rem;
+  -webkit-text-fill-color: black;
+  -webkit-opacity: 1;
   margin-bottom: 1rem;
+  padding: 0;
+  border-radius: 0;
+}
+.list-date {
+  -webkit-text-fill-color: #888;
+  color: #888;
+  font-size: 1.2rem;
 }
 .edit input[type="text"] {
-border-bottom: 1px solid #444 !important;
+  border-bottom: 1px solid #444 !important;
+  &::-webkit-input-placeholder {
+    -webkit-opacity: 0.4 !important;
+    opacity: 0.4 !important;
+  }
 }
 @import "_nav";
+
+
+@media only screen and (min-width: 768px){
+  .list-date {
+    text-align: right;
+    font-size: inherit;
+  }
+}

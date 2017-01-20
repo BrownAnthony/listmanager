@@ -82,6 +82,30 @@
 
       $scope.$apply();
     });
+  
+
+  socket.on('updatedList', function (list) {
+    var index;
+    ctrl.active.forEach(function(l, i){
+      if(l._id === list._id){
+        index = i;
+      }
+    });
+    if(index !== undefined){
+      ctrl.active.splice(index, 1, list);
+    } else if(ctrl.showInactive === true){
+      ctrl.inactive.forEach(function(l, i){
+        if(l._id === list._id){
+          index = i;
+        }
+      });
+      ctrl.inactive.splice(index, 1, list);
+
+    }
+
+
+    $scope.$apply();
   });
+});
 
 }());

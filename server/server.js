@@ -78,6 +78,8 @@ io.on('connection', function(socket){
         ack(list);
         if(newList === true) {
           socket.broadcast.emit('newList', list);
+        } else {
+          socket.broadcast.emit('updatedList', list);
         }
       })
     ;
@@ -138,5 +140,5 @@ io.on('connection', function(socket){
   });
 });
 
-server.listen(8080);
+server.listen(process.env.port);
 console.log('server started');

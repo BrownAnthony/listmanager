@@ -91,6 +91,23 @@ var app = angular.module('List');
       $scope.$apply();
     });
 
+    socket.on('deletedList', function(_id){
+      if(_id !== ctrl.list._id){
+          return;
+      }
+      $location.path('/');
+      $scope.$apply();
+    });
+
+    socket.on('updatedList', function(list){
+      if(list._id !== ctrl.list._id){
+          return;
+      }
+      ctrl.list = list;
+      $scope.$apply();
+    });
+
+
     if($routeParams.hasOwnProperty('id')){
       //load list
       socket.emit('getList', {id: $routeParams.id}, function(list){
