@@ -8,7 +8,7 @@ function getConnection(){
     return Promise.resolve(cache);
   }
 
-  return client.connect('mongodb://localhost:27017/ListManager')
+  return client.connect(process.env.dburl)
     .then(function(db){
       cache = db;
       return db;
